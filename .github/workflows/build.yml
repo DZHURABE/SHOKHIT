@@ -1,0 +1,111 @@
+name: SHOKH_IT — сайт ва APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      build_apk:
+        description: "Янги APK тўплансинми? (фақат иконка ёки номни ўзгартирсангиз керак)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: shokh-it
+  cancel-in-progress: true
+
+jobs:
+  site:
+    name: Сайт (GitHub Pages)
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Сайт манзилини ёзиш
+        run: |
+          OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          REPO="${{ github.event.repository.name }}"
+          if [ "$REPO" = "$OWNER.github.io" ]; then SITE="https://$OWNER.github.io/"; else SITE="https://$OWNER.github.io/$REPO/"; fi
+          sed -i "s#__SITE_URL__#$SITE#g" index.html
+          sed -i "s#__APP_VERSION__#${{ github.run_number }}#g" index.html
+          echo "{\"v\":\"${{ github.run_number }}\"}" > version.json
+          printf 'User-agent: *\nAllow: /\nSitemap: %ssitemap.xml\n' "$SITE" > robots.txt
+          printf '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>%s</loc><changefreq>weekly</changefreq><priority>1.0</priority></url></urlset>\n' "$SITE" > sitemap.xml
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+  apk:
+    name: Android APK
+    # APK фақат қўлда, «build_apk» белгиланганда тўпланади.
+    if: github.event_name == 'workflow_dispatch' && inputs.build_apk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Capacitor лойиҳасини тайёрлаш
+        run: |
+          OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          REPO="${{ github.event.repository.name }}"
+          if [ "$REPO" = "$OWNER.github.io" ]; then SITE="https://$OWNER.github.io/"; else SITE="https://$OWNER.github.io/$REPO/"; fi
+          echo "Илова очадиган манзил: $SITE"
+          mkdir -p build && cd build
+          npm init -y >/dev/null
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
+          mkdir -p www && cp ../index.html ../config.js ../manifest.json ../sw.js ../icon-192.png ../icon-512.png ../favicon.png ../apple-touch-icon.png ../logo.svg ../og.png www/
+          cat > capacitor.config.json <<JSON
+          {
+            "appId": "tj.shokhit.app",
+            "appName": "SHOKH IT",
+            "webDir": "www",
+            "server": { "url": "$SITE", "androidScheme": "https" }
+          }
+          JSON
+          npx cap add android
+          npx cap sync android
+
+      - name: Белги (иконка)
+        run: |
+          cd build/android/app/src/main/res
+          rm -rf mipmap-anydpi-v26
+          for d in mipmap-mdpi mipmap-hdpi mipmap-xhdpi mipmap-xxhdpi mipmap-xxxhdpi; do
+            mkdir -p $d
+            cp ../../../../../../icon-512.png $d/ic_launcher.png
+            cp ../../../../../../icon-512.png $d/ic_launcher_round.png
+            cp ../../../../../../icon-512.png $d/ic_launcher_foreground.png
+          done
+
+      - name: APK тўплаш
+        run: |
+          cd build/android
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+          cp app/build/outputs/apk/debug/app-debug.apk ../../SHOKH_IT.apk
+
+      - name: Релиз (юклаб олиш ҳаволаси)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: SHOKH IT ${{ github.run_number }}
+          body: "Android учун SHOKH IT. Пастдаги SHOKH_IT.apk файлини юклаб олиб ўрнатинг."
+          files: SHOKH_IT.apk
+          make_latest: true
