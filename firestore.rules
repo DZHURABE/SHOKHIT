@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Паролни тиклаш рақами: админ уни 1 га оширса, эски парол ишламай қолади.
+    function pubV(phone) {
+      return get(/databases/$(database)/documents/pub/$(phone)).data.v;
+    }
+    function isOwner(phone) {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/pub/$(phone))
+        && request.auth.token.email == phone + '_' + string(pubV(phone)) + '@shokh-it.app';
+    }
+    // Админ — фақат шу рақам.
+    function isAdmin() {
+      return isOwner('992939911199');
+    }
+    // 30 кун бепул ёки тўланган муддат тугамаган бўлса — фаол.
+    function isActive(phone) {
+      let a = get(/databases/$(database)/documents/accounts/$(phone)).data;
+      return a.createdAt + duration.value(30, 'd') > request.time
+          || ('paidUntil' in a && a.paidUntil > request.time);
+    }
+
+    // Кириш учун рақам версияси (парол эмас).
+    match /pub/{phone} {
+      allow get: if true;
+      allow list: if false;
+      allow create: if request.auth != null
+        && request.auth.token.email == phone + '_0@shokh-it.app'
+        && request.resource.data.keys().hasOnly(['v'])
+        && request.resource.data.v == 0;
+      allow update: if isAdmin()
+        && request.resource.data.keys().hasOnly(['v'])
+        && request.resource.data.v == resource.data.v + 1;
+      allow delete: if false;
+    }
+
+    // Ҳар бир дўкон фақат ўз маълумотини кўради.
+    // Муддат тугаса — ўқий олади, лекин янги нарса ёза олмайди.
+    match /users/{phone}/{document=**} {
+      allow read: if isOwner(phone);
+      allow write: if isOwner(phone) && (isAdmin() || isActive(phone));
+    }
+
+    // Обуналар: мижоз фақат ўзиникини кўради, муддатни фақат админ ўзгартиради.
+    match /accounts/{phone} {
+      allow read: if isOwner(phone) || isAdmin();
+      allow create: if isOwner(phone)
+        && request.resource.data.createdAt == request.time
+        && !('paidUntil' in request.resource.data);
+      allow update, delete: if isAdmin();
+    }
+
+    // Тўлов реквизитлари: ҳамма кўради, фақат админ ёзади.
+    match /payinfo/{doc} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+
+    // «Мен тўладим» сўровлари: мижоз ўзиникини юборади ва кўради, админ тасдиқлайди.
+    match /payreq/{id} {
+      allow create: if request.auth != null
+        && isOwner(request.resource.data.phone)
+        && request.resource.data.status == 'new'
+        && request.resource.data.keys().hasOnly(['phone','shop','m','amount','cur','note','at','status']);
+      allow read: if isAdmin() || (request.auth != null && isOwner(resource.data.phone));
+      allow update, delete: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
