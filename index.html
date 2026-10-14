@@ -1181,6 +1181,197 @@ details.more[open]{padding-bottom:14px}
 .crbtn{min-height:44px}
 .etext .en{font-size:14px}
 .eamt b{font-size:14px}
+.delacc{display:block;margin:4px auto 6px;padding:10px 16px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+/* ===== Auth 2 + splash ===== */
+.splash{position:absolute;inset:0;z-index:60;display:grid;place-content:center;justify-items:center;gap:14px;color:#fff;
+  background:radial-gradient(90% 60% at 100% 0%,rgba(255,224,138,.25),transparent 55%),linear-gradient(160deg,#16B387,#0B6B53 55%,#053A2D)}
+.sp-logo{width:84px;height:84px;border-radius:26px;overflow:hidden;box-shadow:0 0 0 3px rgba(255,255,255,.3),0 20px 40px rgba(0,0,0,.3);animation:spPop .5s cubic-bezier(.3,1.4,.5,1)}
+.sp-logo svg{width:100%;height:100%;display:block}
+.sp-wm{font:700 22px/1 "Unbounded","Golos Text",sans-serif;letter-spacing:-.02em}
+.sp-wm b{margin-left:6px;padding:2px 7px;border-radius:7px;background:#F5B83D;color:#2B1C00;font-size:15px}
+.sp-bar{display:block;width:64px;height:4px;border-radius:4px;margin-top:10px;background:rgba(255,255,255,.2);overflow:hidden;position:relative}
+.sp-bar::after{content:"";position:absolute;inset:0;width:40%;border-radius:4px;background:#fff;animation:spRun 1s ease-in-out infinite}
+@keyframes spPop{from{transform:scale(.7);opacity:0}}
+.sp-s{stroke-dasharray:100;stroke-dashoffset:100;animation:spDraw .7s .15s cubic-bezier(.6,0,.2,1) forwards}
+.sp-c{transform-origin:370px 150px;transform:scale(0);animation:spCoin .45s .8s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes spDraw{to{stroke-dashoffset:0}}
+@keyframes spCoin{to{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.sp-s{animation:none;stroke-dashoffset:0}.sp-c{animation:none;transform:none}}
+@keyframes spRun{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
+@media (prefers-reduced-motion:reduce){.sp-logo,.sp-bar::after{animation:none}}
+
+.lock.au2{display:block;justify-items:normal;place-items:normal;padding:0;overflow-y:auto;background:
+  radial-gradient(90% 50% at 100% 0%,rgba(255,224,138,.22),transparent 55%),
+  linear-gradient(170deg,#16B387 0%,#0B6B53 45%,#06402F 100%)}
+.aform2{width:100%;min-height:100%;max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:14px;
+  padding:calc(14px + env(safe-area-inset-top,0px)) 20px calc(22px + env(safe-area-inset-bottom,0px))}
+.atop{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.abrand{display:flex;align-items:center;gap:9px}
+.abrand .logo{width:38px;height:38px;border-radius:12px;box-shadow:0 0 0 2px rgba(255,255,255,.3)}
+.abrand .wm{font-size:16px}
+.alang2{display:flex;gap:4px;padding:3px;border-radius:999px;background:rgba(0,0,0,.18)}
+.alang2 button{min-width:38px;padding:7px 9px;border-radius:999px;color:rgba(255,255,255,.75);font:700 12.5px "Golos Text",sans-serif}
+.alang2 button[aria-pressed="true"]{background:#fff;color:#0B5E4B}
+.ahead{margin-top:14px}
+.ahead h1{font:700 clamp(26px,8vw,32px)/1.12 "Unbounded","Golos Text",sans-serif;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.ahead p{margin:8px 0 0;font-size:15px;line-height:1.45;opacity:.85}
+.atrial{display:inline-block;margin-top:12px;padding:6px 12px;border-radius:999px;background:rgba(255,224,138,.18);border:1px solid rgba(255,224,138,.45);color:#FFE7A8;font-weight:700;font-size:13.5px}
+.atabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:16px;background:rgba(0,0,0,.2);margin-top:6px}
+.atabs button{min-height:44px;border-radius:12px;color:rgba(255,255,255,.75);font-weight:700;font-size:15px}
+.atabs button[aria-selected="true"]{background:#fff;color:#0B5E4B;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.afield{display:grid;gap:7px;grid-template-columns:minmax(0,1fr)}
+.aphone,.apass{min-width:0}
+.aphone input,.apass input{width:0}
+.afield > label{font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;opacity:.8}
+.aphone,.apass,.ainput{display:flex;align-items:center;min-height:56px;border-radius:16px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.28);transition:border-color .2s,background-color .2s,box-shadow .2s}
+.ainput{width:100%;padding:0 16px;color:#fff;font-size:16.5px;outline:none}
+.aphone:focus-within,.apass:focus-within,.ainput:focus{border-color:#fff;background:rgba(255,255,255,.18);box-shadow:0 0 0 4px rgba(255,255,255,.14)}
+.aphone.bad,.apass.bad{border-color:#FFC27A;background:rgba(255,160,90,.14);animation:aShake .35s}
+@keyframes aShake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+@media (prefers-reduced-motion:reduce){.aphone.bad,.apass.bad{animation:none}}
+.aphone input,.apass input{flex:1;min-width:0;height:54px;border:0;background:transparent;color:#fff;font-size:17px;outline:none;padding:0 14px;letter-spacing:.02em}
+.ainput::placeholder,.aphone input::placeholder,.apass input::placeholder{color:rgba(255,255,255,.5)}
+.acc2{position:relative;display:flex;align-items:center;gap:4px;height:54px;padding:0 10px 0 14px;border-right:1.5px solid rgba(255,255,255,.22);font-weight:700;font-size:16px;white-space:nowrap}
+.acc2 svg{width:16px;height:16px;opacity:.8}
+.acc2 select{position:absolute;inset:0;width:100%;opacity:0;cursor:pointer;font-size:16px}
+.acc2 select option{color:#111}
+.acc3{flex:0 0 64px!important;border-right:1.5px solid rgba(255,255,255,.22)!important;padding:0 8px!important}
+.aeye{width:52px;height:54px;display:grid;place-items:center;color:rgba(255,255,255,.85);flex:none}
+.aeye svg{width:22px;height:22px}
+.aforgot2{justify-self:end;font-size:14px;font-weight:600;color:#fff;opacity:.9;text-decoration:underline;text-underline-offset:3px;padding:4px 2px}
+.aerr2{display:grid;gap:8px;padding:10px 12px;border-radius:12px;background:rgba(255,190,110,.16);border:1px solid rgba(255,200,130,.4);color:#FFE3B8;font-size:14px;font-weight:600;line-height:1.35}
+.aerr2 button{justify-self:start;padding:8px 12px;border-radius:10px;background:#fff;color:#0B5E4B;font-weight:700;font-size:14px}
+.abtn2{position:relative;margin-top:6px;min-height:58px;border-radius:18px;background:#fff;color:#0B3B30;font:700 17px "Golos Text",sans-serif;box-shadow:0 16px 34px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;gap:10px}
+.abtn2:disabled{opacity:.85}
+.abtn2 .aspin{display:none;width:20px;height:20px;border-radius:50%;border:2.5px solid rgba(11,59,48,.25);border-top-color:#0B3B30;animation:aSpin .7s linear infinite}
+.abtn2.busy .aspin{display:block}
+@keyframes aSpin{to{transform:rotate(360deg)}}
+.aterms{margin:2px 0 0;text-align:center;font-size:12.5px;opacity:.7;line-height:1.45}
+.aterms a{color:#fff;font-weight:600}
+/* ===== v2.5 COMPACT: ихчам ва тартибли ===== */
+body{font-size:14.5px}
+/* hero */
+.hero{padding:calc(10px + env(safe-area-inset-top,0px)) 16px 40px}
+.hero .ibtn{width:36px;height:36px;border-radius:12px}
+.logo{width:34px;height:34px;border-radius:11px}
+.hero-main{margin-top:12px}
+.greet{font-size:13px;margin-bottom:4px}
+.hero-main small{font-size:11px}
+.hero-main b{font-size:clamp(28px,8.6vw,34px);margin-top:2px}
+.today{margin-top:6px;font-size:12px}
+.today .tdv{padding:2px 8px 2px 6px}
+.herobtns{margin-top:10px;gap:6px}
+.settlebtn{padding:7px 12px;font-size:12.5px}
+.stats.three{margin-top:10px;gap:6px}
+.stats.three .stat{padding:8px 10px;border-radius:14px}
+.stats.three .stat span{font-size:9.5px;min-height:0;display:block;white-space:nowrap}
+.stats.three .stat b{font-size:14px}
+.sbar{height:4px;margin-top:4px}
+/* panel + list */
+.panel{margin-top:-26px;padding-top:12px;border-radius:24px 24px 0 0}
+.panel::before{margin:-4px auto 10px;width:34px}
+.trialbar,.duecard{margin:0 12px 8px!important;padding:9px 12px!important;font-size:13px}
+.dci{width:32px;height:32px;font-size:17px;border-radius:10px}
+.duecard b{font-size:13.5px}.duecard small{font-size:11.5px}
+.searchbar{margin:0 12px 8px;padding:0 12px;border-radius:14px}
+.searchbar input{padding:10px 0;font-size:15px}
+.chips{padding:0 12px 8px;gap:6px}
+.chip{min-height:32px;padding:6px 12px;font-size:12.5px}
+.rows{gap:6px;padding:2px 10px 0}
+.row{min-height:58px;padding:9px 12px;gap:11px;border-radius:16px}
+.av{width:40px;height:40px;border-radius:13px;font-size:13px}
+.row .nm{font-size:14.5px}
+.row .ph{font-size:12px}
+.amt{font-size:12.5px!important;padding:3px 8px;border-radius:9px}
+.row .rv small{font-size:10.5px;margin-top:3px}
+.tag{font-size:9.5px;padding:1px 6px}
+.fab{width:52px;height:52px;border-radius:17px;right:16px;bottom:calc(82px + env(safe-area-inset-bottom,0px))}
+.fab svg{width:24px;height:24px}
+/* nav */
+.nav{left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom,0px));border-radius:22px;padding:4px}
+.nav button{min-height:46px;padding:5px 0 4px}
+.nav .nl{font-size:10px}
+.nav-ind{border-radius:17px}
+/* sheets */
+.sheet{padding:4px 14px calc(16px + env(safe-area-inset-bottom,0px));border-radius:24px 24px 0 0}
+.grab{margin:6px auto 10px;width:36px;height:4px}
+.shead h2{font-size:16px}
+.shead .ibtn{width:32px;height:32px;border-radius:10px}
+.cbal{padding:12px 14px;border-radius:18px}
+.cbal span{font-size:10.5px}
+.cbal b{font-size:24px}
+.cbal .ph{margin-top:8px;padding-top:8px}
+.cbal .ph > span:first-child{font-size:14px}
+.phbtns a,.phbtns button{width:34px;height:34px;border-radius:10px}
+.phbtns svg{width:16px;height:16px}
+.cbal .duebox{margin-top:6px}
+.cbal .duebox b{font-size:13px!important}
+.acts{gap:8px;margin-top:10px}
+.acts .btn{min-height:46px;font-size:15px;border-radius:14px}
+.mini{gap:6px;margin-top:8px}
+.mini button{min-height:38px;font-size:12.5px;border-radius:12px}
+.mini.mini5{gap:6px}
+.crbtn{min-height:38px;font-size:13px;margin-top:6px;border-radius:12px}
+.sect{margin:16px 2px 6px;font-size:10.5px}
+.erow{grid-template-columns:36px minmax(0,1fr) auto 26px!important;gap:9px!important;padding:9px 10px!important}
+.erow .ic{width:36px;height:36px;border-radius:11px}
+.erow .ic svg{width:17px;height:17px}
+.etext .en{font-size:13.5px}
+.etext .tm{font-size:11px}
+.eamt b{font-size:13px}
+.eamt small{font-size:10px}
+/* forms */
+.field{margin-top:12px;gap:5px}
+.field label{font-size:10.5px}
+.field input,.field textarea,.field select{min-height:46px;padding:11px 13px;font-size:15.5px;border-radius:12px}
+.money{font-size:24px!important;min-height:54px!important}
+.calcbtn{width:52px;border-radius:12px}
+.quick{gap:5px;margin-top:8px}
+.quick button{min-height:32px;padding:6px 11px;font-size:13px;border-radius:10px}
+.seg button{min-height:38px;font-size:13.5px}
+.btn{min-height:48px;border-radius:14px;font-size:15px}
+details.more{margin-top:12px;border-radius:14px}
+details.more > summary{min-height:42px;padding:10px 14px;font-size:13px}
+.done .dchk{width:52px;height:52px;font-size:24px}
+.done h2{font-size:17px}
+.smsbox{font-size:13px;padding:12px;border-radius:14px}
+.sendrow a{min-height:46px;border-radius:14px;font-size:14.5px}
+.bigwa{min-height:52px!important;border-radius:16px!important}
+/* page headers + profile + wallet + history */
+.phead{padding:calc(8px + env(safe-area-inset-top,0px)) 8px 8px}
+.phead h1{font-size:15px}
+.phead .ibtn{width:36px;height:36px}
+.pname{padding:calc(16px + env(safe-area-inset-top,0px)) 16px 4px;column-gap:12px}
+.pav{width:50px;height:50px;border-radius:16px;font-size:17px}
+.pname h2{font-size:20px}
+.group{margin:10px 12px;border-radius:18px;padding:4px 0}
+.group h3{font-size:10.5px;padding:10px 16px 4px}
+.item{min-height:52px;padding:7px 14px;gap:12px}
+.item .ii{width:34px;height:34px;border-radius:11px;font-size:16px}
+.item .ii svg{width:18px;height:18px}
+.item span{font-size:14.5px}
+.item small{font-size:11.5px}
+.sep{margin-left:60px}
+.outrow{margin:10px 12px}
+.outrow button{min-height:46px;font-size:15px}
+.wcard{margin:12px;padding:16px 16px 14px;border-radius:22px}
+.wcard .lbl{font-size:10px}
+.wcard .big{font-size:clamp(26px,8vw,32px)}
+.wbtn{min-height:42px;font-size:13.5px;border-radius:12px}
+.methods{gap:6px}
+.methods > *{padding:8px 10px;border-radius:14px}
+.methods b{font-size:14px}
+.dayh{padding:14px 16px 6px;font-size:10.5px}
+.hrow{padding:9px 12px}
+.hrow .ic{width:36px;height:36px;border-radius:11px}
+.pnl{padding:14px;border-radius:18px}
+.pnl-main b{font-size:24px}
+.gct{padding:10px 10px;border-radius:14px;min-width:0;gap:6px}
+.gct .gcl{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.gct .gci{width:30px;height:30px;flex:none}
+.dailybtn{padding:10px 10px;font-size:12.5px}
+/* toast */
+.toast{padding:9px 14px;font-size:13.5px;border-radius:13px}
 /* ---------- tablet / desktop ---------- */
 @media (min-width:560px){
   body{background:radial-gradient(60% 60% at 50% 0%,color-mix(in srgb,var(--acc) 10%,var(--bg2)),var(--bg2))}
@@ -1208,7 +1399,7 @@ details.more[open]{padding-bottom:14px}
   <div id="payl"></div>
   <div id="tourl"></div>
   <div id="updl"></div>
-  <div id="lockl"></div>
+  <div id="lockl"><div class="splash" aria-label="SHOKH IT"><div class="sp-logo"><svg viewBox="0 0 512 512"><rect width="512" height="512" rx="116" fill="#0E8C6C"/><path class="sp-s" d="M338 150H214a62 62 0 0 0 0 124h84a62 62 0 0 1 0 124H166" fill="none" stroke="#fff" stroke-width="66" stroke-linecap="round" stroke-linejoin="round" pathLength="100"/><circle class="sp-c" cx="370" cy="150" r="40" fill="#F5B83D"/></svg></div><div class="sp-wm">SHOKH<b>IT</b></div><i class="sp-bar"></i></div></div>
   <div class="toast" id="toast" hidden></div>
 </div>
 
@@ -1216,7 +1407,7 @@ details.more[open]{padding-bottom:14px}
 (function(){
 /* ================= i18n ================= */
 const T = {
-tj:{remindShort:"Хотиррасон",sendReceipt:"Фиристодани чек",moreOpts:"Иловагӣ: сана, муҳлат, насия",moreDate:"Иловагӣ: сана",editEntry:"Таҳрири сабт",backExit:"Барои баромадан боз як бор пахш кунед",overpay:"Мизоҷ {b} қарздор, шумо {a} навиштед — {d} қарзи шумо ба ӯ мешавад",dupFound:"Ин мизоҷ аллакай ҳаст",dupAdd:"Қарзро ба ӯ илова кардан",dupOpen:"Мизоҷро кушодан",dupNew:"Ба ҳар ҳол мизоҷи нав",gMorning:"Субҳ ба хайр",gDay:"Рӯз ба хайр",gEvening:"Шом ба хайр",todayNone:"Имрӯз ҳоло сабт нест",paidOffTitle:"Қарз пурра пӯшида шуд!",paidOffSub:"{n} ҳисобро баробар кард",startDebt:"Қарзи ҳозира (ихтиёрӣ)",startDebtHint:"Агар мизоҷ аллакай қарздор бошад, маблағро нависед — дарҳол сабт мешавад",startDebtNote:"Қарзи аввала",home:"Асосӣ",wallet:"Ҳамён",history:"Таърих",profile:"Профил",
+tj:{aHelloReg:"Хуш омадед!",aHelloRegSub:"Ҳисоб созед — 1 дақиқа. Маълумоти шумо дар ҳама телефонҳо нигоҳ дошта мешавад.",aHelloLog:"Боз салом!",aHelloLogSub:"Бо рақам ва пароли худ ворид шавед.",aShopOpt:"Номи мағоза",aShopPh:"масалан: Мағозаи Шоҳ",aPassPh:"камаш 6 аломат",aShow:"Нишон додан",aHide:"Пинҳон кардан",aForgotBtn:"Паролро фаромӯш кардед?",aForgotMsg:"Салом! Пароли SHOKH IT-ро фаромӯш кардам. Рақамам: ",aLoginInstead:"Ворид шудан бо ин рақам",aTrial:"30 рӯз ройгон",aLoading:"Боргирӣ…",aTerms:"Бо идома додан шумо ба",aPrivacy:"сиёсати махфият",aTermsEnd:"розӣ мешавед",delAcc:"Нест кардани ҳисоб",delAccSub:"Ҳисоб ва ҳамаи маълумот тамоман нест мешаванд",delAccAsk:"Ҳамаи мизоҷон, сабтҳо ва ҳисоби шумо бебозгашт нест мешаванд. Барои тасдиқ пароли худро ворид кунед.",delAccBtn:"Ҳисобро нест кунед",delAccDone:"Ҳисоб нест карда шуд",delAccPwd:"Парол нодуруст",playExpTitle:"Муҳлати обуна тамом шуд",playExpSub:"Маълумоти шумо бехатар нигоҳ дошта мешавад. Пас аз фаъол шудани обуна «Санҷидан»-ро пахш кунед.",remindShort:"Хотиррасон",sendReceipt:"Фиристодани чек",moreOpts:"Иловагӣ: сана, муҳлат, насия",moreDate:"Иловагӣ: сана",editEntry:"Таҳрири сабт",backExit:"Барои баромадан боз як бор пахш кунед",overpay:"Мизоҷ {b} қарздор, шумо {a} навиштед — {d} қарзи шумо ба ӯ мешавад",dupFound:"Ин мизоҷ аллакай ҳаст",dupAdd:"Қарзро ба ӯ илова кардан",dupOpen:"Мизоҷро кушодан",dupNew:"Ба ҳар ҳол мизоҷи нав",gMorning:"Субҳ ба хайр",gDay:"Рӯз ба хайр",gEvening:"Шом ба хайр",todayNone:"Имрӯз ҳоло сабт нест",paidOffTitle:"Қарз пурра пӯшида шуд!",paidOffSub:"{n} ҳисобро баробар кард",startDebt:"Қарзи ҳозира (ихтиёрӣ)",startDebtHint:"Агар мизоҷ аллакай қарздор бошад, маблағро нависед — дарҳол сабт мешавад",startDebtNote:"Қарзи аввала",home:"Асосӣ",wallet:"Ҳамён",history:"Таърих",profile:"Профил",
  all:"Ҳама",debtors:"Қарздорон",iOwe:"Ман қарздорам",netTotal:"Аз мизоҷон гирифтанӣ",iOweSum:"Қарзи ман",people:"мизоҷ",
  search:"Ҷустуҷӯ аз рӯи ном ё рақам",noCustomers:"Ҳоло мизоҷ нест. Тугмаи «+»-ро пахш кунед.",noResults:"Чизе ёфт нашуд.",
  sortTitle:"Тартиб додан",sortRecent:"Аз охирин амал",sortName:"Аз рӯи ном",sortAmount:"Аз рӯи маблағ",groupsTitle:"Гурӯҳҳо",addGroup:"Гурӯҳи нав",groupName:"Номи гурӯҳ",delGroup:"Нест кардани гурӯҳ",
@@ -1246,7 +1437,7 @@ tj:{remindShort:"Хотиррасон",sendReceipt:"Фиристодани че�
  dayL:["Якшанбе","Душанбе","Сешанбе","Чоршанбе","Панҷшанбе","Ҷумъа","Шанбе"],dayS:["Яш","Дш","Сш","Чш","Пш","Ҷм","Шн"],
  updAvail:"🔄 Версияи нав омад",updBtn:"Навсозӣ", sup:"Доставщикҳо",supSub:"Касоне, ки ба мағоза мол меоранд",supNew:"Доставщики нав",supName:"Ном",supWhat:"Чӣ меорад (масалан: орд, нӯшокӣ)",supIn:"📦 Мол гирифтам",supPay:"💸 Пул додам",supInT:"Мол гирифтам",supPayT:"Пул додам",supOwe:"Қарзи ман",supOver:"Пешакӣ додаам",supClear:"Ҳисоб баробар",supTotal:"Қарзи ман ба доставщикҳо",supNone:"Ҳоло доставщик нест. Тугмаи «+ Доставщики нав»-ро пахш кунед.",supFromCash:"Аз хазина гирифта шавад",supSaved:"Сабт шуд",supGoods:"Чӣ мол (масалан: 10 қоп орд)",supHist:"Таърих",supNoHist:"Ҳоло сабт нест.",supMsg:"Ассалому алейкум, {n}! Ҳисоби мо: мол гирифтам {in}, пул додам {pay}. Қарзи ман: {left}.",supWrite:"Ба WhatsApp навиштан",supTotIn:"Ҳамагӣ мол",supTotPay:"Ҳамагӣ пардохт",delSupAsk:"Доставщик ва ҳамаи сабтҳояш нест мешаванд. Идома медиҳед?", settle:"Ҳисоббаробаркунӣ",settleSub:"Кӣ чӣ қадар гирифт, чӣ қадар дод, чӣ қадар монд",sTook:"Гирифт",sPaid:"Дод",sLeft:"Монд",sTotal:"Ҳамагӣ",sAllClients:"мизоҷ",sShare:"Ба WhatsApp фиристодан",sSort:"Тартиб",sOnlyDebt:"Танҳо қарздорон",sHead:"Ҳисоббаробаркунӣ",sPeriod:"Давра",sNoData:"Дар ин давра ҳаракат нест.", whoTitle:"Дар ин телефон кӣ кор мекунад?",whoSub:"Номи худро нависед — дар назди ҳар сабт «✍ ном» намоён мешавад. Барои оила ё фурӯшандагон, ки бо як рақам кор мекунанд.",whoPh:"масалан: Малика",whoSave:"Нигоҳ доштан",whoSkip:"Баъдтар",whoItem:"Номи ман дар ин телефон",whoNone:"Навишта нашудааст",whoSaved:"Ном нигоҳ дошта шуд",byAll:"Ҳама", credit:"Кредит",credits:"Кредитҳо",creditNew:"Кредити нав",crProduct:"Мол (масалан: Samsung A15)",crPrice:"Нархи мол",crDown:"Пардохти аввал (аванс)",crMarkup:"Фоизи иловагӣ, %",crMonths:"Чанд моҳ",crFirst:"Пардохти якум",crMonthly:"Ҳар моҳ",crTotal:"Ҳамагӣ бо кредит",crFinanced:"Боқимонда ба кредит",crSave:"Кредит додан",crSaved:"Кредит сабт шуд",crActive:"фаъол",crNone:"Ҳоло кредит нест. Мизоҷро кушоед ва «💳 Кредит»-ро пахш кунед.",crNext:"Пардохти навбатӣ",crDone:"Пурра пардохт шуд",crPaidOf:"{p} аз {t}",crContract:"📄 Шартнома",crContractTitle:"Шартномаи кредит",crBuyer:"Харидор",crSeller:"Фурӯшанда",crSchedule:"Ҷадвали пардохт",crSign:"Имзо: ________",crNeed:"Ном ва нархи молро нависед",crDownBig:"Аванс аз нарх зиёд аст", products:"Молҳо ва нархҳо",productsSub:"Барои зуд навиштани қарз",prodName:"Номи мол",prodPrice:"Нарх",prodUnit:"Воҳид (қоп, кг, дона…)",prodAdd:"Илова кардан",noProducts:"Ҳоло мол нест. Ному нархро нависед ва «Илова кардан»-ро пахш кунед.",pickProducts:"Молро интихоб кунед",limit:"Лимити қарз (ихтиёрӣ)",limitWarn:"⚠ Қарз аз лимит мегузарад: {b} / {l}",overLimit:"Аз лимит зиёд",inst:"Бо қисмҳо пардохт (насия)",instN:"Чанд моҳ",instFirst:"Пардохти аввал",instPlan:"Ҷадвали насия",instPart:"{i}-қисм",instPaid:"пардохт шуд",black:"Рӯйхати сиёҳ",blackOn:"⚫ Дар рӯйхати сиёҳ",blackAdd:"⚫ Ба рӯйхати сиёҳ",blackRemove:"Аз рӯйхати сиёҳ баровардан",blackWarn:"Ин мизоҷ дар рӯйхати сиёҳ аст — эҳтиёт шавед!",daily:"📊 Ҳисоботи рӯз",dailyTitle:"Ҳисоботи имрӯз",dGiven:"Қарз дода шуд",dTaken:"Пул гирифта шуд",dNew:"Мизоҷони нав",dOverdue:"Муҳлат гузашт",dTotal:"Ҳамагӣ дар одамон",dShare:"Ба WhatsApp фиристодан", tour:[["👋","Хуш омадед ба SHOKH IT","Дафтари қарзи шумо акнун дар телефон аст — ҳеч чиз гум намешавад."],["➕","Мизоҷ илова кунед","Тугмаи сабзи «+»-ро пахш кунед. Номро аз контактҳои телефон ҳам гирифтан мумкин."],["💸","Қарз ва пардохт","Мизоҷро кушоед: «Додам» — қарз додед, «Гирифтам» — пул гирифтед. Барнома худаш ҳисоб мекунад."],["💬","Чек ба WhatsApp","Пас аз ҳар сабт чек бо як тугма ба WhatsApp-и мизоҷ меравад."]],tourNext:"Минбаъд",tourGo:"Оғоз кардан",tourSkip:"Гузаштан",tryDemo:"🧪 Бо намуна санҷед",tryDemoSub:"3 мизоҷи намунавӣ илова мешавад — баъд бо як тугма тоза мекунед",sampleOn:"Маълумоти намунавӣ",sampleClear:"Тоза кардан",sampleAdded:"Намуна илова шуд",sampleCleared:"Намуна тоза шуд",fromContacts:"📇 Аз контактҳо",refTitle:"Дӯстатонро даъват кунед",refSub:"Ҳар ду +15 рӯз ройгон мегиред",refText:"Ин пайвандро ба дӯстон фиристед. Вақте ки дӯстатон бақайд гирифта, бори аввал пардохт мекунад, ба шумо ва ба ӯ +15 рӯз ройгон илова мешавад.",refShare:"Фиристодан ба WhatsApp",refMsg:"Салом! Ман дафтари қарзро дар SHOKH IT пеш мебарам — хеле қулай. 30 рӯз ройгон. Бо ин пайванд бақайд гир, ҳардуямон +15 рӯз ройгон мегирем:",refBy:"Даъват:",refBonus:"🎁 Бонуси даъват: +15 рӯз ба ҳарду",dueTitle:"⏰ Муҳлати пардохт",dueSub:"{n} нафар — бугун ё гузаштааст",dueSend:"Хотиррасон",stmt:"📄 Ҳисобот",stmtTitle:"Ҳисоботи пурра",stmtHead:"Ҳисобот",stmtGave:"Қарз гирифт",stmtTook:"Пардохт кард",stmtTotal:"Ҳамагӣ қарз",stmtPaid:"Ҳамагӣ пардохт",stmtLeft:"Боқимонда", payNow:"💳 Пардохт кардан",step1:"1. Пулро ба яке аз ин кортҳо гузаронед",step2:"2. Пас аз пардохт",backPlans:"← Тарифҳо",sendCheck:"Чекро ба WhatsApp фиристед",paidMsg:"Ман {n} — {p} пардохт кардам. Чекро мефиристам.",toPay:"Пардохт", howPay:"💳 Чӣ тавр пардохт кардан",payNoInfo:"Барои маълумоти пардохт ба WhatsApp нависед.",iPaid:"✓ Ман пардохт кардам",payNote:"Рақами амалиёт ё шарҳ (аз куҷо фиристодед)",payNotePh:"масалан: аз корти Алиф, 14:30",paySend:"Фиристодан",payReqSent:"Сўров фиристода шуд. Пас аз санҷиш дастрасӣ кушода мешавад.",payPending:"⏳ Пардохти шумо санҷида мешавад",payRejected:"❌ Пардохт тасдиқ нашуд. Ба WhatsApp нависед.",admTabUsers:"Мизоҷон",admTabPays:"Пардохтҳо",admTabInfo:"Реквизитҳо",admApprove:"✓ Тасдиқ",admReject:"✗ Рад",admApproved:"Тасдиқ шуд — дастрасӣ кушода шуд",admRejected:"Рад карда шуд",noPays:"Ҳоло сўров нест.",stNew:"Нав",stOk:"Тасдиқшуда",stNo:"Радшуда",infoHint:"Барои ҳар кишвар нависед, ки пулро ба куҷо фиристанд (рақами корт, Click, Payme, Сбербанк…). Мизоҷ маҳз ҳаминро мебинад.",infoSaved:"Реквизитҳо нигоҳ дошта шуданд", country:"Кишвар",otherCC:"Дигар",ccCode:"Коди кишвар",currency:"Асъор",curHint:"Пуле, ки бо он кор мекунед", pwKicker:"SHOKH IT PRO",pwHead:"Идома диҳед — ҳамааш дар ҷояш",pwB:["Мизоҷон ва қарзҳо бе маҳдудият","Чек ба WhatsApp бо як тугма","Ҳисоботи қарзҳо ва ҳисоби хона","Дар ҳама телефонҳо — бо як рақам"],pwSafe:"Маълумоти шумо ҳифз шудааст", plansTitle:"Тарифро интихоб кунед",plansSub:"Ҳар қадар муддат дарозтар — ҳамон қадар арзонтар",perMo:"с./моҳ",saveX:"{x} с. сарфа",popular:"Маъмул",best:"Аз ҳама фоиданок",mo1:"1 моҳ",mo3:"3 моҳ",mo6:"6 моҳ",mo12:"1 сол",planMsg:"Тариф: {n} — {p} сомонӣ",payChosen:"Пардохт: {p} сомонӣ",fromP:"аз {p} с./моҳ",admAddN:"+{n}", admPw:"🔑 Парол",admPwAsk:"Тасдиқ?",admPwDone:"Пароли кӯҳна хомӯш шуд. Ба мизоҷ гӯед: бо ҳамин рақам аз нав «Бақайдгирӣ» кунад ва пароли нав гузорад. Маълумоташ боқӣ мемонад.",admPwMsg:"Ассалому алейкум! Пароли SHOKH IT-и шумо тоза карда шуд. Барномаро кушоед ва бо ҳамин рақам «Бақайдгирӣ»-ро пахш карда, пароли нав гузоред. Ҳамаи маълумотҳоятон дар ҷояш.",admPwSend:"Ба мизоҷ хабар фиристед", subTitle:"Обуна",trialLeft:"Давраи ройгон: {n} рӯз монд",paidTill:"Пардохт шудааст то {d}",expiredT:"Муҳлат тамом шуд",payTitle:"Давраи ройгон тамом шуд",payText:"Барои идомаи кор бо SHOKH IT пардохти моҳона — {p} сомонӣ. Ба WhatsApp нависед, пардохт кунед ва мо дастрасиро фаъол мекунем.",payBtn:"Навиштан ба WhatsApp",payMsg:"Ассалому алейкум! Ман мехоҳам SHOKH IT-ро фаъол кунам. Рақамам: +{ph}",payData:"Маълумоти шумо нест намешавад — пас аз пардохт ҳамааш дар ҷояш мемонад.",checkAgain:"Санҷидан",admin:"Панели админ",admSub:"Мизоҷон ва обунаҳо",admSearch:"Ҷустуҷӯ аз рӯи рақам ё ном",admAdd1:"+1 моҳ",admAdd3:"+3 моҳ",admOff:"Қатъ",admTrial:"Ройгон",admPaid:"Пардохт",admExp:"Тамом",admTotal:"Ҳамагӣ",admActive:"Фаъол",admDone:"Дастрасӣ дода шуд",admOffDone:"Дастрасӣ қатъ шуд",admJoined:"Қайд",trialBanner:"Ройгон: {n} рӯз монд · моҳе {p} с.", hb:"Ҳисоби хона",hbSub:"Пули хонаи худ — алоҳида аз мағоза",hbBal:"Пул дар хона",hbIn:"Даромад",hbOut:"Хароҷот",hbAddIn:"Даромад илова",hbAddOut:"Хароҷот илова",hbCat:"Намуд",hbNone:"Ҳоло сабт нест. Даромад ё хароҷотро илова кунед.",hbMonth:"Ин моҳ",hbByCat:"Хароҷот аз рӯи намуд",hbSaved:"Сабт шуд",hbOpen:"Кушодан",hbCatsOut:["Хӯрокворӣ","Коммуналӣ","Нақлиёт","Оила","Саломатӣ","Либос","Дигар"],hbCatsIn:["Маош","Аз мағоза","Дигар"], ops:"амал", rcGive:"Шумо ба қарз гирифтед",rcTake:"Шумо пардохт кардед",rcLeft:"Қарзи боқимонда", sentTitle:"Сабт шуд",sendToClient:"Ба мизоҷ дар WhatsApp фиристед",sendWaBig:"Фиристодан ба WhatsApp",skip:"Не, лозим нест",noPhoneWa:"Рақами мизоҷ нест. Рақамро нависед — чек ба WhatsApp-и ӯ меравад.",savePhone:"Рақамро нигоҳ доштан",waTo:"Ба", debtStats:"Ҳисоби қарзҳо",gaveTotal:"Ба қарз дода шуд",collected:"Баргардонида шуд",remaining:"Дар одамон монд",ofPeople:"нафар",collectPct:"баргардонида шуд",inPeriod:"Дар ин давра",nowLeft:"Ҳозир дар одамон",topDebtors:"Қарздорони калонтарин", pnl:"Фойда ва зарар",profit:"Фойда",loss:"Зарар",revenue:"Фурӯш",costSum:"Таннарх",expenses:"Хароҷот",expense:"Хароҷот",expenseTitle:"Хароҷоти нав",expenseNote:"Барои чӣ (масалан: иҷора, барқ, нақлиёт)",expenseAdded:"Хароҷот сабт шуд",cost:"Нархи харид / таннарх (ихтиёрӣ)",costHint:"Агар нархи харидро нависед, фойда дуруст ҳисоб мешавад",pAll:"Ҳама вақт",pnlHint:"Фурӯш — моле, ки ба қарз ё нақд фурӯхтед. Фойда = фурӯш − таннарх − хароҷот.",noCostWarn:"Дар баъзе фурӯшҳо таннарх навишта нашудааст — фойда аз ҳақиқӣ зиёдтар нишон дода мешавад",pnlMonth:"Ин моҳ",details:"Батафсил",sale:"Фурӯши нақд", notes:"Қайдҳо",newNote:"Қайди нав",editNote:"Таҳрири қайд",noteTitle:"Сарлавҳа",noteText:"Матн",noteTextPh:"Чизеро нависед…",noNotes:"Ҳоло қайд нест. Барои навиштан «+»-ро пахш кунед.",pin:"Боло гузоштан",unpin:"Аз боло гирифтан",delNoteAsk:"Ин қайд нест карда шавад?",needNote:"Матн нависед",calc:"Ҳисобкунак",useResult:"Истифода бурдан",pinned:"Болоӣ", login:"Даромадан",register:"Бақайдгирӣ",loginTitle:"Ба ҳисоби худ ворид шавед",regTitle:"Ҳисоби нав созед",password:"Парол",password2:"Паролро такрор кунед",pwShort:"Парол бояд на камтар аз 6 аломат бошад",pwMismatch:"Паролҳо мувофиқ нестанд",badPhone:"Рақами телефонро дуруст нависед",wrongLogin:"Рақам ё парол нодуруст",phoneTaken:"Ин рақам аллакай ба қайд гирифта шудааст — «Даромадан»-ро пахш кунед",netErr:"Интернет нест. Пайвастро санҷед.",forgot:"Паролро фаромӯш кардед? Ба дастгирӣ нависед:",noAcc:"Ҳисоб надоред?",haveAcc:"Ҳисоб доред?",signingIn:"Интизор шавед…",account:"Ҳисоб",signOutAsk:"Аз ҳисоб бароед? Маълумот нест намешавад — бо ҳамин рақам ва парол боз ворид шуда метавонед.", deposit:"Илова кардан",depositTitle:"Ба хазина илова кардан",depositNote:"Аз куҷо (масалан: фурӯши нақд)",deposited:"Ба хазина илова шуд",depositRow:"Ба хазина",pToday:"Имрӯз",pWeek:"Ин ҳафта",pMonth:"Ин моҳ",income:"Даромад",delOp:"Нест кардани амал", debtDate:"Санаи қарз гирифтан",payDate:"Санаи пардохт",debtSince:"Қарз гирифт", sendWa:"Фиристодан ба WhatsApp",sendTg:"Фиристодан ба Telegram",smsFree:"Ройгон: WhatsApp ё Telegram кушода мешавад, матн тайёр аст — танҳо «Фиристодан»-ро пахш кунед.",due:"Муҳлати пардохт (ихтиёрӣ)",overdue:"Муҳлат гузашт",dueOn:"Муҳлат",receipt:"Чек фиристодан",receiptTitle:"Чек",totalDebt:"Қарзи умумӣ",report:"Ҳисобот (Excel)",reportSub:"Ҳамаи мизоҷон ва сабтҳо",reportSaved:"Файл нигоҳ дошта шуд",reportNA:"Дар ин дастгоҳ боргирӣ дастрас нест",otherApp:"Дигар барнома: матнро нусха гиред",
  smsDefault:"Ассалому алейкум, {ном}! Қарзи шумо дар {мағоза} {маблағ} сомонӣ аст. Лутфан пардохт кунед. Тел: {телефон}"},
-uz:{remindShort:"Эслатма",sendReceipt:"Чек юбориш",moreOpts:"Қўшимча: сана, муддат, насия",moreDate:"Қўшимча: сана",editEntry:"Ёзувни таҳрирлаш",backExit:"Чиқиш учун яна бир марта босинг",overpay:"Мижоз {b} қарздор, сиз {a} ёздингиз — {d} сизнинг унга қарзингиз бўлиб қолади",dupFound:"Бу мижоз аллақачон бор",dupAdd:"Қарзни унга қўшиш",dupOpen:"Мижозни очиш",dupNew:"Барибир янги мижоз",gMorning:"Хайрли тонг",gDay:"Хайрли кун",gEvening:"Хайрли кеч",todayNone:"Бугун ҳали ёзув йўқ",paidOffTitle:"Қарз тўлиқ ёпилди!",paidOffSub:"{n} ҳисобни тўлиқ тенглади",startDebt:"Ҳозирги қарзи (ихтиёрий)",startDebtHint:"Мижоз аллақачон қарздор бўлса, суммани ёзинг — дарҳол ёзилади",startDebtNote:"Бошланғич қарз",home:"Асосий",wallet:"Ҳамён",history:"Тарих",profile:"Профил",
+uz:{aHelloReg:"Хуш келибсиз!",aHelloRegSub:"Ҳисоб очинг — 1 дақиқа. Маълумотларингиз ҳамма телефонда сақланади.",aHelloLog:"Яна салом!",aHelloLogSub:"Рақамингиз ва паролингиз билан киринг.",aShopOpt:"Дўкон номи",aShopPh:"масалан: Шоҳ дўкони",aPassPh:"камида 6 белги",aShow:"Кўрсатиш",aHide:"Яшириш",aForgotBtn:"Паролни унутдингизми?",aForgotMsg:"Салом! SHOKH IT паролимни унутдим. Рақамим: ",aLoginInstead:"Шу рақам билан кириш",aTrial:"30 кун бепул",aLoading:"Юкланмоқда…",aTerms:"Давом этиш орқали сиз",aPrivacy:"махфийлик сиёсати",aTermsEnd:"га розилик берасиз",delAcc:"Ҳисобни ўчириш",delAccSub:"Ҳисоб ва барча маълумотлар бутунлай ўчади",delAccAsk:"Барча мижозлар, ёзувлар ва ҳисобингиз қайтариб бўлмайдиган қилиб ўчирилади. Тасдиқлаш учун паролингизни киритинг.",delAccBtn:"Ҳисобни ўчириш",delAccDone:"Ҳисоб ўчирилди",delAccPwd:"Парол нотўғри",playExpTitle:"Обуна муддати тугади",playExpSub:"Маълумотларингиз хавфсиз сақланади. Обуна фаоллашгандан кейин «Текшириш»ни босинг.",remindShort:"Эслатма",sendReceipt:"Чек юбориш",moreOpts:"Қўшимча: сана, муддат, насия",moreDate:"Қўшимча: сана",editEntry:"Ёзувни таҳрирлаш",backExit:"Чиқиш учун яна бир марта босинг",overpay:"Мижоз {b} қарздор, сиз {a} ёздингиз — {d} сизнинг унга қарзингиз бўлиб қолади",dupFound:"Бу мижоз аллақачон бор",dupAdd:"Қарзни унга қўшиш",dupOpen:"Мижозни очиш",dupNew:"Барибир янги мижоз",gMorning:"Хайрли тонг",gDay:"Хайрли кун",gEvening:"Хайрли кеч",todayNone:"Бугун ҳали ёзув йўқ",paidOffTitle:"Қарз тўлиқ ёпилди!",paidOffSub:"{n} ҳисобни тўлиқ тенглади",startDebt:"Ҳозирги қарзи (ихтиёрий)",startDebtHint:"Мижоз аллақачон қарздор бўлса, суммани ёзинг — дарҳол ёзилади",startDebtNote:"Бошланғич қарз",home:"Асосий",wallet:"Ҳамён",history:"Тарих",profile:"Профил",
  all:"Ҳаммаси",debtors:"Қарздорлар",iOwe:"Мен қарздорман",netTotal:"Мижозлардан оладиганингиз",iOweSum:"Менинг қарзим",people:"мижоз",
  search:"Исм ёки рақам бўйича қидириш",noCustomers:"Ҳали мижоз йўқ. «+» тугмасини босинг.",noResults:"Ҳеч нарса топилмади.",
  sortTitle:"Саралаш",sortRecent:"Охирги амал бўйича",sortName:"Исм бўйича",sortAmount:"Сумма бўйича",groupsTitle:"Гуруҳлар",addGroup:"Янги гуруҳ",groupName:"Гуруҳ номи",delGroup:"Гуруҳни ўчириш",
@@ -1276,7 +1467,7 @@ uz:{remindShort:"Эслатма",sendReceipt:"Чек юбориш",moreOpts:"Қ�
  dayL:["Якшанба","Душанба","Сешанба","Чоршанба","Пайшанба","Жума","Шанба"],dayS:["Як","Ду","Се","Чо","Па","Жу","Ша"],
  updAvail:"🔄 Янги версия чиқди",updBtn:"Янгилаш", sup:"Доставщиклар",supSub:"Дўконга товар олиб келадиганлар",supNew:"Янги доставщик",supName:"Исми",supWhat:"Нима олиб келади (масалан: ун, ичимлик)",supIn:"📦 Товар олдим",supPay:"💸 Пул бердим",supInT:"Товар олдим",supPayT:"Пул бердим",supOwe:"Менинг қарзим",supOver:"Олдиндан берганман",supClear:"Ҳисоб тенг",supTotal:"Доставщикларга қарзим",supNone:"Ҳали доставщик йўқ. «+ Янги доставщик» тугмасини босинг.",supFromCash:"Хазинадан олинсин",supSaved:"Ёзилди",supGoods:"Қандай товар (масалан: 10 қоп ун)",supHist:"Тарих",supNoHist:"Ҳали ёзув йўқ.",supMsg:"Ассалому алайкум, {n}! Ҳисобимиз: товар олдим {in}, пул бердим {pay}. Менинг қарзим: {left}.",supWrite:"WhatsApp'га ёзиш",supTotIn:"Жами товар",supTotPay:"Жами тўлов",delSupAsk:"Доставщик ва унинг барча ёзувлари ўчирилади. Давом этасизми?", settle:"Ҳисоб-китоб",settleSub:"Ким қанча олди, қанча берди, қанча қолди",sTook:"Олди",sPaid:"Берди",sLeft:"Қолди",sTotal:"Жами",sAllClients:"мижоз",sShare:"WhatsApp'га юбориш",sSort:"Саралаш",sOnlyDebt:"Фақат қарздорлар",sHead:"Ҳисоб-китоб",sPeriod:"Давр",sNoData:"Бу даврда ҳаракат йўқ.", whoTitle:"Бу телефонда ким ишлайди?",whoSub:"Исмингизни ёзинг — ҳар бир ёзув ёнида «✍ исм» кўринади. Битта рақам билан ишлайдиган оила ёки сотувчилар учун.",whoPh:"масалан: Малика",whoSave:"Сақлаш",whoSkip:"Кейинроқ",whoItem:"Бу телефондаги исмим",whoNone:"Ёзилмаган",whoSaved:"Исм сақланди",byAll:"Ҳамма", credit:"Кредит",credits:"Кредитлар",creditNew:"Янги кредит",crProduct:"Товар (масалан: Samsung A15)",crPrice:"Товар нархи",crDown:"Бошланғич тўлов (аванс)",crMarkup:"Устама фоиз, %",crMonths:"Неча ой",crFirst:"Биринчи тўлов",crMonthly:"Ҳар ойга",crTotal:"Кредит билан жами",crFinanced:"Кредитга қолади",crSave:"Кредит бериш",crSaved:"Кредит ёзилди",crActive:"фаол",crNone:"Ҳали кредит йўқ. Мижозни очиб, «💳 Кредит»ни босинг.",crNext:"Кейинги тўлов",crDone:"Тўлиқ тўланди",crPaidOf:"{p} / {t}",crContract:"📄 Шартнома",crContractTitle:"Кредит шартномаси",crBuyer:"Харидор",crSeller:"Сотувчи",crSchedule:"Тўлов жадвали",crSign:"Имзо: ________",crNeed:"Товар номи ва нархини ёзинг",crDownBig:"Аванс нархдан катта", products:"Товарлар ва нархлар",productsSub:"Қарзни тез ёзиш учун",prodName:"Товар номи",prodPrice:"Нархи",prodUnit:"Бирлиги (қоп, кг, дона…)",prodAdd:"Қўшиш",noProducts:"Ҳали товар йўқ. Номи ва нархини ёзиб, «Қўшиш»ни босинг.",pickProducts:"Товарни танланг",limit:"Қарз лимити (ихтиёрий)",limitWarn:"⚠ Қарз лимитдан ошади: {b} / {l}",overLimit:"Лимитдан ошган",inst:"Бўлиб тўлаш (насия)",instN:"Неча ой",instFirst:"Биринчи тўлов",instPlan:"Насия жадвали",instPart:"{i}-қисм",instPaid:"тўланди",black:"Қора рўйхат",blackOn:"⚫ Қора рўйхатда",blackAdd:"⚫ Қора рўйхатга",blackRemove:"Қора рўйхатдан чиқариш",blackWarn:"Бу мижоз қора рўйхатда — эҳтиёт бўлинг!",daily:"📊 Кунлик ҳисобот",dailyTitle:"Бугунги ҳисобот",dGiven:"Қарз берилди",dTaken:"Пул олинди",dNew:"Янги мижозлар",dOverdue:"Муддати ўтган",dTotal:"Жами одамларда",dShare:"WhatsApp'га юбориш", tour:[["👋","SHOKH IT'га хуш келибсиз","Қарз дафтарингиз энди телефонда — ҳеч нарса йўқолмайди."],["➕","Мижоз қўшинг","Яшил «+» тугмасини босинг. Исмни телефон контактларидан ҳам олиш мумкин."],["💸","Қарз ва тўлов","Мижозни очинг: «Бердим» — қарз бердингиз, «Олдим» — пул олдингиз. Илова ўзи ҳисоблайди."],["💬","WhatsApp'га чек","Ҳар бир ёзувдан кейин чек битта тугма билан мижоз WhatsApp'ига кетади."]],tourNext:"Кейинги",tourGo:"Бошлаш",tourSkip:"Ўтказиб юбориш",tryDemo:"🧪 Намуна билан синаб кўринг",tryDemoSub:"3 та намуна мижоз қўшилади — кейин битта тугма билан тозалайсиз",sampleOn:"Намуна маълумотлар",sampleClear:"Тозалаш",sampleAdded:"Намуна қўшилди",sampleCleared:"Намуна тозаланди",fromContacts:"📇 Контактлардан",refTitle:"Дўстингизни таклиф қилинг",refSub:"Иккалангиз +15 кун бепул оласиз",refText:"Бу ҳаволани дўстларга юборинг. Дўстингиз рўйхатдан ўтиб, биринчи марта тўлов қилганда, сизга ҳам, унга ҳам +15 кун бепул қўшилади.",refShare:"WhatsApp'га юбориш",refMsg:"Салом! Мен қарз дафтарини SHOKH IT'да юритаман — жуда қулай. 30 кун бепул. Шу ҳавола орқали рўйхатдан ўт, иккаламиз +15 кун бепул оламиз:",refBy:"Таклиф:",refBonus:"🎁 Таклиф бонуси: иккаласига +15 кун",dueTitle:"⏰ Тўлов муддати",dueSub:"{n} киши — бугун ёки ўтиб кетган",dueSend:"Эслатма",stmt:"📄 Ҳисобот",stmtTitle:"Тўлиқ ҳисобот",stmtHead:"Ҳисобот",stmtGave:"Қарз олди",stmtTook:"Тўлади",stmtTotal:"Жами қарз",stmtPaid:"Жами тўлов",stmtLeft:"Қолди", payNow:"💳 Тўлаш",step1:"1. Пулни шу карталардан бирига ўтказинг",step2:"2. Тўлагандан кейин",backPlans:"← Тарифлар",sendCheck:"Чекни WhatsApp'га юбориш",paidMsg:"Мен {n} — {p} тўладим. Чекни юбораман.",toPay:"Тўлов", howPay:"💳 Қандай тўлаш керак",payNoInfo:"Тўлов маълумоти учун WhatsApp'га ёзинг.",iPaid:"✓ Мен тўладим",payNote:"Тўлов рақами ёки изоҳ (қаердан юбордингиз)",payNotePh:"масалан: Click орқали, 14:30",paySend:"Юбориш",payReqSent:"Сўров юборилди. Текширилгандан кейин доступ очилади.",payPending:"⏳ Тўловингиз текширилмоқда",payRejected:"❌ Тўлов тасдиқланмади. WhatsApp'га ёзинг.",admTabUsers:"Мижозлар",admTabPays:"Тўловлар",admTabInfo:"Реквизитлар",admApprove:"✓ Тасдиқлаш",admReject:"✗ Рад этиш",admApproved:"Тасдиқланди — доступ очилди",admRejected:"Рад этилди",noPays:"Ҳали сўров йўқ.",stNew:"Янги",stOk:"Тасдиқланган",stNo:"Рад этилган",infoHint:"Ҳар бир мамлакат учун пулни қаерга юборишни ёзинг (карта рақами, Click, Payme, Сбербанк…). Мижоз айнан шуни кўради.",infoSaved:"Реквизитлар сақланди", country:"Мамлакат",otherCC:"Бошқа",ccCode:"Мамлакат коди",currency:"Валюта",curHint:"Қайси пулда ишлайсиз", pwKicker:"SHOKH IT PRO",pwHead:"Давом эттиринг — ҳаммаси жойида",pwB:["Чексиз мижоз ва қарзлар","Битта тугмада WhatsApp'га чек","Қарзлар ҳисоботи ва уй ҳисоби","Ҳамма телефонда — битта рақам билан"],pwSafe:"Маълумотларингиз сақланган", plansTitle:"Тарифни танланг",plansSub:"Муддат қанча узун бўлса — шунча арзон",perMo:"с./ой",saveX:"{x} с. тежайсиз",popular:"Оммабоп",best:"Энг фойдали",mo1:"1 ой",mo3:"3 ой",mo6:"6 ой",mo12:"1 йил",planMsg:"Тариф: {n} — {p} сомонӣ",payChosen:"Тўлов: {p} сомонӣ",fromP:"{p} с./ойдан",admAddN:"+{n}", admPw:"🔑 Парол",admPwAsk:"Тасдиқми?",admPwDone:"Эски парол ўчирилди. Мижозга айтинг: шу рақам билан қайта «Рўйхатдан ўтиш»ни босиб, янги парол қўйсин. Маълумотлари сақланади.",admPwMsg:"Ассалому алайкум! SHOKH IT паролингиз тозаланди. Иловани очиб, шу рақам билан «Рўйхатдан ўтиш»ни босинг ва янги парол қўйинг. Барча маълумотларингиз жойида.",admPwSend:"Мижозга хабар юбориш", subTitle:"Обуна",trialLeft:"Бепул давр: {n} кун қолди",paidTill:"{d} гача тўланган",expiredT:"Муддат тугади",payTitle:"Бепул давр тугади",payText:"SHOKH IT'ни ишлатишни давом эттириш учун ойлик тўлов — {p} сомонӣ. WhatsApp'га ёзинг, тўланг ва биз доступни ёқиб берамиз.",payBtn:"WhatsApp'га ёзиш",payMsg:"Ассалому алайкум! Мен SHOKH IT'ни фаоллаштирмоқчиман. Рақамим: +{ph}",payData:"Маълумотларингиз ўчмайди — тўловдан кейин ҳаммаси жойида бўлади.",checkAgain:"Текшириш",admin:"Админ панел",admSub:"Мижозлар ва обуналар",admSearch:"Рақам ёки ном бўйича қидириш",admAdd1:"+1 ой",admAdd3:"+3 ой",admOff:"Ўчириш",admTrial:"Бепул",admPaid:"Тўланган",admExp:"Тугаган",admTotal:"Жами",admActive:"Фаол",admDone:"Доступ берилди",admOffDone:"Доступ ўчирилди",admJoined:"Рўйхатдан ўтди",trialBanner:"Бепул: {n} кун қолди · ойига {p} с.", hb:"Уй ҳисоби",hbSub:"Уйдаги пулингиз — дўкондан алоҳида",hbBal:"Уйдаги пул",hbIn:"Кирим",hbOut:"Чиқим",hbAddIn:"Кирим қўшиш",hbAddOut:"Чиқим қўшиш",hbCat:"Тури",hbNone:"Ҳали ёзув йўқ. Кирим ёки чиқим қўшинг.",hbMonth:"Шу ой",hbByCat:"Чиқимлар тури бўйича",hbSaved:"Ёзилди",hbOpen:"Очиш",hbCatsOut:["Озиқ-овқат","Коммунал","Транспорт","Оила","Соғлиқ","Кийим","Бошқа"],hbCatsIn:["Маош","Дўкондан","Бошқа"], ops:"та амал", rcGive:"Қарзга олдингиз",rcTake:"Тўладингиз",rcLeft:"Қолган қарзингиз", sentTitle:"Сақланди",sendToClient:"Мижозга WhatsApp орқали юборинг",sendWaBig:"WhatsApp'га юбориш",skip:"Йўқ, керак эмас",noPhoneWa:"Мижоз рақами йўқ. Рақамни ёзинг — чек унинг WhatsApp'ига боради.",savePhone:"Рақамни сақлаш",waTo:"Кимга:", debtStats:"Қарзлар ҳисоби",gaveTotal:"Қарзга берилди",collected:"Қайтарилди",remaining:"Одамларда қолди",ofPeople:"киши",collectPct:"қайтарилди",inPeriod:"Шу даврда",nowLeft:"Ҳозир одамларда",topDebtors:"Энг катта қарздорлар", pnl:"Фойда ва зарар",profit:"Фойда",loss:"Зарар",revenue:"Савдо",costSum:"Таннарх",expenses:"Харажатлар",expense:"Харажат",expenseTitle:"Янги харажат",expenseNote:"Нима учун (масалан: ижара, свет, транспорт)",expenseAdded:"Харажат ёзилди",cost:"Олиш нархи / таннарх (ихтиёрий)",costHint:"Олиш нархини ёзсангиз, фойда тўғри ҳисобланади",pAll:"Бутун вақт",pnlHint:"Савдо — қарзга ёки нақдга сотган молингиз. Фойда = савдо − таннарх − харажатлар.",noCostWarn:"Баъзи савдоларда таннарх ёзилмаган — фойда ҳақиқийдан кўпроқ кўринади",pnlMonth:"Шу ой",details:"Батафсил",sale:"Нақд савдо", notes:"Қайдлар",newNote:"Янги қайд",editNote:"Қайдни таҳрирлаш",noteTitle:"Сарлавҳа",noteText:"Матн",noteTextPh:"Бирор нарса ёзинг…",noNotes:"Ҳали қайд йўқ. Ёзиш учун «+»ни босинг.",pin:"Тепага маҳкамлаш",unpin:"Маҳкамни олиш",delNoteAsk:"Бу қайд ўчирилсинми?",needNote:"Матн ёзинг",calc:"Калькулятор",useResult:"Ишлатиш",pinned:"Маҳкамланган", login:"Кириш",register:"Рўйхатдан ўтиш",loginTitle:"Ҳисобингизга киринг",regTitle:"Янги ҳисоб очинг",password:"Парол",password2:"Паролни такрорланг",pwShort:"Парол камида 6 белгидан иборат бўлсин",pwMismatch:"Пароллар мос эмас",badPhone:"Телефон рақамини тўғри ёзинг",wrongLogin:"Рақам ёки парол нотўғри",phoneTaken:"Бу рақам аллақачон рўйхатдан ўтган — «Кириш»ни босинг",netErr:"Интернет йўқ. Уланишни текширинг.",forgot:"Паролни унутдингизми? Қўллаб-қувватлашга ёзинг:",noAcc:"Ҳисобингиз йўқми?",haveAcc:"Ҳисобингиз борми?",signingIn:"Кутинг…",account:"Ҳисоб",signOutAsk:"Ҳисобдан чиқасизми? Маълумот ўчмайди — шу рақам ва парол билан яна кирасиз.", deposit:"Пул қўшиш",depositTitle:"Хазинага пул қўшиш",depositNote:"Қаердан (масалан: нақд савдо)",deposited:"Хазинага қўшилди",depositRow:"Хазинага",pToday:"Бугун",pWeek:"Шу ҳафта",pMonth:"Шу ой",income:"Кирим",delOp:"Амални ўчириш", debtDate:"Қарз олинган сана",payDate:"Тўланган сана",debtSince:"Қарз олган", sendWa:"WhatsApp'га юбориш",sendTg:"Telegram'га юбориш",smsFree:"Бепул: WhatsApp ёки Telegram очилади, матн тайёр — фақат «Юбориш»ни босинг.",due:"Тўлов муддати (ихтиёрий)",overdue:"Муддати ўтган",dueOn:"Муддат",receipt:"Чек юбориш",receiptTitle:"Чек",totalDebt:"Умумий қарз",report:"Ҳисобот (Excel)",reportSub:"Барча мижозлар ва ёзувлар",reportSaved:"Файл сақланди",reportNA:"Бу қурилмада юклаб олиш мавжуд эмас",otherApp:"Бошқа илова: матндан нусха олинг",
  smsDefault:"Ассалому алайкум, {ном}! {мағоза}даги қарзингиз {маблағ} сомонӣ. Илтимос, тўлаб қўйинг. Тел: {телефон}"},
-ru:{remindShort:"Напомнить",sendReceipt:"Отправить чек",moreOpts:"Дополнительно: дата, срок, рассрочка",moreDate:"Дополнительно: дата",editEntry:"Изменить запись",backExit:"Нажмите ещё раз, чтобы выйти",overpay:"Клиент должен {b}, вы вписали {a} — {d} станет вашим долгом ему",dupFound:"Такой клиент уже есть",dupAdd:"Добавить долг ему",dupOpen:"Открыть клиента",dupNew:"Всё равно создать нового",gMorning:"Доброе утро",gDay:"Добрый день",gEvening:"Добрый вечер",todayNone:"Сегодня записей пока нет",paidOffTitle:"Долг полностью погашен!",paidOffSub:"{n} полностью рассчитался",startDebt:"Текущий долг (необязательно)",startDebtHint:"Если клиент уже должен — впишите сумму, она сразу запишется",startDebtNote:"Начальный долг",home:"Главная",wallet:"Кошелёк",history:"История",profile:"Профиль",
+ru:{aHelloReg:"Добро пожаловать!",aHelloRegSub:"Создайте аккаунт — 1 минута. Данные сохраняются на всех ваших телефонах.",aHelloLog:"С возвращением!",aHelloLogSub:"Войдите по номеру и паролю.",aShopOpt:"Название магазина",aShopPh:"например: Магазин Шох",aPassPh:"не меньше 6 символов",aShow:"Показать",aHide:"Скрыть",aForgotBtn:"Забыли пароль?",aForgotMsg:"Здравствуйте! Я забыл пароль SHOKH IT. Мой номер: ",aLoginInstead:"Войти с этим номером",aTrial:"30 дней бесплатно",aLoading:"Загрузка…",aTerms:"Продолжая, вы принимаете",aPrivacy:"политику конфиденциальности",aTermsEnd:"",delAcc:"Удалить аккаунт",delAccSub:"Аккаунт и все данные будут удалены навсегда",delAccAsk:"Все клиенты, записи и ваш аккаунт будут удалены без возможности восстановления. Для подтверждения введите пароль.",delAccBtn:"Удалить аккаунт",delAccDone:"Аккаунт удалён",delAccPwd:"Неверный пароль",playExpTitle:"Срок подписки истёк",playExpSub:"Ваши данные надёжно сохранены. После активации подписки нажмите «Проверить».",remindShort:"Напомнить",sendReceipt:"Отправить чек",moreOpts:"Дополнительно: дата, срок, рассрочка",moreDate:"Дополнительно: дата",editEntry:"Изменить запись",backExit:"Нажмите ещё раз, чтобы выйти",overpay:"Клиент должен {b}, вы вписали {a} — {d} станет вашим долгом ему",dupFound:"Такой клиент уже есть",dupAdd:"Добавить долг ему",dupOpen:"Открыть клиента",dupNew:"Всё равно создать нового",gMorning:"Доброе утро",gDay:"Добрый день",gEvening:"Добрый вечер",todayNone:"Сегодня записей пока нет",paidOffTitle:"Долг полностью погашен!",paidOffSub:"{n} полностью рассчитался",startDebt:"Текущий долг (необязательно)",startDebtHint:"Если клиент уже должен — впишите сумму, она сразу запишется",startDebtNote:"Начальный долг",home:"Главная",wallet:"Кошелёк",history:"История",profile:"Профиль",
  all:"Все",debtors:"Должники",iOwe:"Я должен",netTotal:"Вам должны",iOweSum:"Мой долг",people:"клиентов",
  search:"Поиск по имени или номеру",noCustomers:"Пока нет клиентов. Нажмите «+».",noResults:"Ничего не найдено.",
  sortTitle:"Сортировка",sortRecent:"По последней операции",sortName:"По имени",sortAmount:"По сумме",groupsTitle:"Группы",addGroup:"Новая группа",groupName:"Название группы",delGroup:"Удалить группу",
@@ -1308,7 +1499,7 @@ ru:{remindShort:"Напомнить",sendReceipt:"Отправить чек",mor
  smsDefault:"Здравствуйте, {ном}! Ваш долг в {мағоза}: {маблағ} сомони. Пожалуйста, оплатите. Тел: {телефон}"}
 };
 const LS = {get(k,d){try{const v=localStorage.getItem("hd2-"+k);return v===null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem("hd2-"+k,JSON.stringify(v));}catch(e){}}};
-let lang = LS.get("lang","tj"); if(!T[lang]) lang="tj";
+let lang = LS.get("lang", (()=>{ const n=(navigator.language||"").toLowerCase(); return n.startsWith("ru")?"ru":n.startsWith("uz")?"uz":"tj"; })()); if(!T[lang]) lang="tj";
 const t = k => { let shopCur = null; if(k==="cur"||k==="curLong"){ try{ shopCur = S.shop && S.shop.cur; }catch(e){} } if(shopCur){ const c = CURS[shopCur]; if(c) return k==="cur" ? c.s : c.l; } return (T[lang][k] ?? T.tj[k] ?? k); };
 const CURS = { TJS:{s:"с.", l:"сомонӣ"}, UZS:{s:"сўм", l:"сўм"}, RUB:{s:"₽", l:"рубль"}, KZT:{s:"₸", l:"тенге"}, KGS:{s:"сом", l:"сом"}, AED:{s:"AED", l:"дирҳам"}, KRW:{s:"₩", l:"вон"}, USD:{s:"$", l:"доллар"}, EUR:{s:"€", l:"евро"} };
 const COUNTRIES = [
@@ -1417,6 +1608,8 @@ function scoped(uid){
   const base = "users/"+uid+"/";
   return { collection:p=>fsdb.collection(base+p), doc:p=>fsdb.doc(base+p) };
 }
+/* Google Play версияси: илова ичида тўлов, нарх ва реквизитлар кўрсатилмайди. */
+const PLAY = /ShokhPlay/.test(navigator.userAgent);
 const ADMIN_PHONE = "992939911199", PRICE = 30, TRIAL_DAYS = 30, DAY = 864e5, REF_DAYS = 15;
 const PLANS = [ {m:1, p:30, k:"mo1"}, {m:3, p:79, k:"mo3"}, {m:6, p:149, k:"mo6", tag:"popular"}, {m:12, p:249, k:"mo12", tag:"best"} ];
 // Нархлар мамлакат пулида (1 ой, 3 ой, 6 ой, 1 йил). Ўзгартириш мумкин.
@@ -1494,6 +1687,11 @@ function subInfo(a){
 function checkAccess(){
   if(!me || !accLoaded) return;
   if(isAdmin() || subInfo(acc).ok){ $("#payl").innerHTML = ""; return; }
+  if(PLAY){ $("#payl").innerHTML = `<div class="pw-screen"><div class="pw-glow g1"></div><div class="pw-glow g2"></div><div class="pw-in">
+    <div class="pw-top"><div class="brand"><span class="logo">${LOGO}</span><span class="wm">SHOKH<b>IT</b></span></div></div>
+    <div class="pw-hero"><div class="pw-badge"><span>${I.lock}</span></div><h2>${t("playExpTitle")}</h2><p>${t("playExpSub")}</p></div>
+    <div class="pw-foot"><button type="button" data-act="paycheck">↻ ${t("checkAgain")}</button><button type="button" data-act="payout">${t("logout")}</button></div>
+    </div></div>`; return; }
   const ph = dataKey(me);
   const msg = t("payMsg").replace("{ph}", ph);
   const pl = PLANS[planPick];
@@ -1545,32 +1743,47 @@ async function boot(){
   auth = firebase.auth(); fsdb = firebase.firestore();
   try{ await fsdb.enablePersistence({synchronizeTabs:true}); }catch(e){}
   auth.onAuthStateChanged(user => {
-    if(user){ (regPromise||Promise.resolve()).then(()=>{ if(auth.currentUser!==user && auth.currentUser) return; $("#lockl").innerHTML=""; startData(user); lockApp(); setTimeout(maybeTour, 900); }); }
-    else { stopData(); me = null; mode = "loading"; closeSheet(); closeCalc(); sub = null; $("#subl").innerHTML = ""; tab = "home"; LS.set("tab", tab); refresh(); authScreen("login"); }
+    if(user){ const fresh = !!regPromise; LS.set("everIn", true); authDraft = {phone:"", pass:"", shop:"", cc:""}; authShowPw = false; if(fresh) LS.set("whoAsked", true); (regPromise||Promise.resolve()).then(()=>{ if(auth.currentUser!==user && auth.currentUser) return; $("#lockl").innerHTML=""; startData(user); lockApp(); setTimeout(maybeTour, 900); }); }
+    else { stopData(); me = null; mode = "loading"; closeSheet(); closeCalc(); sub = null; $("#subl").innerHTML = ""; tab = "home"; LS.set("tab", tab); refresh(); authScreen(); }
   });
 }
-function authScreen(which, err){
+let authDraft = {phone:"", pass:"", shop:"", cc:""}, authShowPw = false;
+function authScreen(which, err, errField){
+  if(!which) which = LS.get("everIn", false) ? "login" : "register";
   const reg = which==="register";
-  const langs = ["tj","uz","ru"].map(l=>`<button type="button" data-alang="${l}" aria-pressed="${lang===l}">${{tj:"Тоҷикӣ",uz:"Ўзбекча",ru:"Русский"}[l]}</button>`).join("");
-  $("#lockl").innerHTML = `<div class="lock auth"><form class="aform" id="f-auth" novalidate>
-    <div class="alangbox"><span>🌐 Забон · Тил · Язык</span><div class="alang">${langs}</div></div>
-    <div class="brand" style="justify-content:center"><span class="logo">${LOGO}</span><span class="wm">SHOKH<b>IT</b></span></div>
-    <h2>${reg?t("regTitle"):t("loginTitle")}</h2>
-    ${(()=>{ const co = COUNTRIES.find(c=>c.id===authCountry) || COUNTRIES[0]; return `
-    <label class="af"><span>${t("country")}</span><select id="a-country" class="acountry">${COUNTRIES.map(c=>`<option value="${c.id}" ${c.id===co.id?"selected":""}>${c.f} ${c.n[lang]||c.n.ru}${c.cc?"  +"+c.cc:""}</option>`).join("")}</select></label>
-    <label class="af"><span>${t("phone")}</span><div class="pfx">${co.cc?`<b>+${co.cc}</b>`:`<b>+</b><input id="a-cc" class="acc-code" inputmode="numeric" placeholder="${t("ccCode")}" maxlength="4" aria-label="${t("ccCode")}">`}<input id="a-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="${co.ph}" maxlength="18"></div></label>`; })()}
-    <label class="af"><span>${t("password")}</span><input id="a-pass" type="password" autocomplete="${reg?"new-password":"current-password"}"></label>
-    ${reg?`<label class="af"><span>${t("password2")}</span><input id="a-pass2" type="password" autocomplete="new-password"></label>
-    <label class="af"><span>${t("shopName")}</span><input id="a-shop" autocomplete="organization"></label>`:""}
-    <div class="aerr" id="a-err">${err||""}</div>
-    <button class="btn abtn" type="submit" id="a-go">${reg?t("register"):t("login")}</button>
-    <div class="aswitch">${reg?t("haveAcc"):t("noAcc")} <button type="button" data-auth="${reg?"login":"register"}">${reg?t("login"):t("register")}</button></div>
-    ${reg?"":`<div class="aforgot">${t("forgot")} <a href="https://wa.me/992939911199" target="_blank" rel="noopener">+992 93 991 11 99</a></div>`}
+  const co = COUNTRIES.find(c=>c.id===authCountry) || COUNTRIES[0];
+  const eyeOn = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>';
+  const eyeOff = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.6 5.1A10.4 10.4 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-3.2 4.1M6.6 6.6C3.7 8.5 2 12 2 12s3.6 7 10 7a9.7 9.7 0 0 0 5.4-1.6M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>';
+  const errHtml = f => err && (errField||"go")===f ? `<div class="aerr2" role="alert">${esc(err)}${f==="phone" && err===t("phoneTaken") ? `<button type="button" data-auth="login">${t("aLoginInstead")} →</button>` : ""}</div>` : "";
+  $("#lockl").innerHTML = `<div class="lock auth au2"><form class="aform2" id="f-auth" novalidate>
+    <div class="atop"><div class="abrand"><span class="logo">${LOGO}</span><span class="wm">SHOKH<b>IT</b></span></div>
+      <div class="alang2" role="group" aria-label="Забон · Тил · Язык">${["tj","uz","ru"].map(l=>`<button type="button" data-alang="${l}" aria-pressed="${lang===l}">${{tj:"TJ",uz:"UZ",ru:"RU"}[l]}</button>`).join("")}</div></div>
+    <div class="ahead"><h1>${reg?t("aHelloReg"):t("aHelloLog")}</h1><p>${reg?t("aHelloRegSub"):t("aHelloLogSub")}</p>${reg && !PLAY?`<span class="atrial">🎁 ${t("aTrial")}</span>`:""}</div>
+    <div class="atabs" role="tablist"><button type="button" role="tab" data-auth="register" aria-selected="${reg}">${t("register")}</button><button type="button" role="tab" data-auth="login" aria-selected="${!reg}">${t("login")}</button></div>
+    <div class="afield"><label for="a-phone">${t("phone")}</label>
+      <div class="aphone${errField==="phone"?" bad":""}">
+        <span class="acc2">${co.f} ${co.cc?"+"+co.cc:"+"} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 10l5 5 5-5"/></svg>
+          <select id="a-country" aria-label="${t("country")}">${COUNTRIES.map(c=>`<option value="${c.id}" ${c.id===co.id?"selected":""}>${c.f} ${c.n[lang]||c.n.ru}${c.cc?"  +"+c.cc:""}</option>`).join("")}</select></span>
+        ${co.cc?"":`<input id="a-cc" class="acc3" inputmode="numeric" placeholder="${t("ccCode")}" maxlength="4" aria-label="${t("ccCode")}" value="${esc(authDraft.cc)}">`}
+        <input id="a-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="${co.ph}" value="${esc(authDraft.phone)}">
+      </div>${errHtml("phone")}</div>
+    <div class="afield"><label for="a-pass">${t("password")}</label>
+      <div class="apass${errField==="pass"?" bad":""}"><input id="a-pass" type="${authShowPw?"text":"password"}" autocomplete="${reg?"new-password":"current-password"}" placeholder="${reg?t("aPassPh"):""}" value="${esc(authDraft.pass)}">
+        <button type="button" class="aeye" id="a-eye" aria-label="${authShowPw?t("aHide"):t("aShow")}" aria-pressed="${authShowPw}">${authShowPw?eyeOff:eyeOn}</button></div>${errHtml("pass")}
+      ${reg?"":`<button type="button" class="aforgot2" id="a-forgot">${t("aForgotBtn")}</button>`}</div>
+    ${reg?`<div class="afield"><label for="a-shop">${t("aShopOpt")}</label><input id="a-shop" class="ainput" autocomplete="organization" placeholder="${t("aShopPh")}" value="${esc(authDraft.shop)}"></div>`:""}
+    ${errHtml("go")}
+    <button class="abtn2" type="submit" id="a-go"><span class="alabel">${reg?t("register"):t("login")}</span><i class="aspin" aria-hidden="true"></i></button>
+    ${reg?`<p class="aterms">${t("aTerms")} <a href="privacy.html" target="_blank" rel="noopener">${t("aPrivacy")}</a>${t("aTermsEnd")?" "+t("aTermsEnd"):""}</p>`:""}
   </form></div>`;
-  setTimeout(()=>$("#a-phone")?.focus(),60);
-  document.querySelectorAll("[data-alang]").forEach(b=>b.onclick=()=>{ lang=b.dataset.alang; LS.set("lang",lang); authScreen(which); refresh(); });
-  $("[data-auth]").onclick = e => authScreen(e.target.dataset.auth);
-  $("#a-country").onchange = e => { authCountry = e.target.value; LS.set("country", authCountry); const ph = $("#a-phone").value; authScreen(which); $("#a-phone").value = ph; };
+  const keep = () => { authDraft.phone = $("#a-phone").value; authDraft.pass = $("#a-pass").value; if($("#a-shop")) authDraft.shop = $("#a-shop").value; if($("#a-cc")) authDraft.cc = $("#a-cc").value; };
+  if(!err) setTimeout(()=>{ const f = $("#a-phone"); if(f && !f.value) f.focus(); },120);
+  document.querySelectorAll("#lockl [data-alang]").forEach(b=>b.onclick=()=>{ keep(); lang=b.dataset.alang; LS.set("lang",lang); authScreen(which); refresh(); });
+  document.querySelectorAll("#lockl [data-auth]").forEach(b=>b.onclick=()=>{ keep(); authScreen(b.dataset.auth); });
+  $("#a-country").onchange = e => { keep(); authCountry = e.target.value; LS.set("country", authCountry); authScreen(which); setTimeout(()=>$("#a-phone")?.focus(),60); };
+  $("#a-eye").onclick = () => { keep(); authShowPw = !authShowPw; const i = $("#a-pass"); i.type = authShowPw?"text":"password"; const e = $("#a-eye"); e.innerHTML = authShowPw?eyeOff:eyeOn; e.setAttribute("aria-pressed", authShowPw); e.setAttribute("aria-label", authShowPw?t("aHide"):t("aShow")); i.focus(); };
+  const fg = $("#a-forgot"); if(fg) fg.onclick = () => { keep(); const num = (co.cc?"+"+co.cc+" ":"")+authDraft.phone; window.open("https://wa.me/992939911199?text="+encodeURIComponent(t("aForgotMsg")+num), "_blank"); };
+  ["a-phone","a-pass","a-shop"].forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener("input", ()=>{ el.closest(".bad")?.classList.remove("bad"); }); });
   $("#f-auth").onsubmit = async e => {
     e.preventDefault();
     const co = COUNTRIES.find(c=>c.id===authCountry) || COUNTRIES[0];
@@ -1580,11 +1793,11 @@ function authScreen(which, err){
     if(co.id==="RU"||co.id==="KZ"){ if(nat.length===11 && nat[0]==="8") nat = nat.slice(1); }
     nat = nat.replace(/^0+/, "");
     const d = cc + nat;
-    const fail = m => { $("#a-err").textContent = m; $("#a-go").disabled=false; $("#a-go").textContent = reg?t("register"):t("login"); };
-    if(!cc || nat.length < co.min || nat.length > co.max || d.length > 15) return fail(t("badPhone"));
-    if(p.length<6) return fail(t("pwShort"));
-    if(reg && p!==$("#a-pass2").value) return fail(t("pwMismatch"));
-    $("#a-go").disabled=true; $("#a-go").textContent=t("signingIn");
+    keep();
+    const fail = (m, f) => { authScreen(which, m, f); const el = f==="phone" ? $("#a-phone") : f==="pass" ? $("#a-pass") : null; if(el) el.focus(); try{ navigator.vibrate && navigator.vibrate([30,40,30]); }catch(_){} };
+    if(!cc || nat.length < co.min || nat.length > co.max || d.length > 15) return fail(t("badPhone"), "phone");
+    if(p.length<6) return fail(t("pwShort"), "pass");
+    $("#a-go").disabled=true; $("#a-go").classList.add("busy"); $("#a-go .alabel").textContent=t("signingIn");
     try{
       const v = await pubVersion(d);
       if(reg){
@@ -1604,10 +1817,11 @@ function authScreen(which, err){
       }
     }catch(err){
       const c = err && err.code || "";
-      if(c.includes("email-already-in-use")) fail(t("phoneTaken"));
+      if(c.includes("email-already-in-use")) fail(t("phoneTaken"), "phone");
       else if(c.includes("network")) fail(t("netErr"));
-      else if(c.includes("weak-password")) fail(t("pwShort"));
-      else fail(t("wrongLogin"));
+      else if(c.includes("weak-password")) fail(t("pwShort"), "pass");
+      else if(c.includes("too-many")) fail(t("netErr"));
+      else fail(t("wrongLogin"), "pass");
     }
   };
 }
@@ -1728,7 +1942,7 @@ function viewHome(){
     </div>`; })()}
   </section>
   <section class="panel">
-    ${(()=>{ if(!me || isAdmin() || !accLoaded) return ""; const si = subInfo(acc); if(si.state!=="trial" && !(si.state==="paid" && si.daysLeft<=3)) return "";
+    ${(()=>{ if(!me || isAdmin() || !accLoaded || PLAY) return ""; const si = subInfo(acc); if(si.state!=="trial" && !(si.state==="paid" && si.daysLeft<=3)) return "";
       return `<button class="trialbar" data-sub="plans">⏳ ${si.state==="trial" ? t("trialLeft").replace("{n}", si.daysLeft)+" · "+t("fromP").replace("{p}", fmtP(planPerMo(PLANS[3]))).replace(" с.", " "+payCurS()) : t("trialLeft").replace("{n}", si.daysLeft)} ›</button>`; })()}
     ${(()=>{ const n = S.customers.filter(c=>c.sample).length; return n ? `<div class="samplebar"><span>🧪 ${t("sampleOn")}</span><button data-act="sampleclear">${t("sampleClear")}</button></div>` : ""; })()}
     ${(()=>{ const act = allCredits().filter(x=>!x.done); return act.length ? `<button class="duecard crhome" data-sub="credits"><span class="dci">💳</span><span><b>${t("credits")}: ${act.length} ${t("crActive")}</b><small>${money(act.reduce((s,x)=>s+x.left,0))} · ${t("crNext")}: ${fmtDate(Math.min(...act.map(x=>x.next.due)))}</small></span>${I.chev}</button>` : ""; })()}
@@ -1933,18 +2147,19 @@ function viewProfile(){
     ${it("ident","shield",t("ownerName"), ver ? sh.firstName+" "+sh.lastName : t("whoNone"))}
     ${dl?`<div class="sep"></div><button class="item" data-act="report"><span class="ii">${I.doc}</span><span>${t("report")}<small>${t("reportSub")}</small></span>${I.chev}</button>`:""}</div>
   ${(()=>{ if(isAdmin()) return `<div class="group"><button class="item" data-sub="admin"><span class="ii" style="background:var(--warn);color:#1a1a1a">${I.shield}</span><span>${t("admin")}<small>${t("admSub")}</small></span>${I.chev}</button></div>`;
-    const si = subInfo(acc); return `<div class="group"><button class="item" data-sub="plans"><span class="ii" style="background:var(--acc-soft);color:var(--acc)">${I.star}</span><span>${t("subTitle")} · ${t("fromP").replace("{p}", fmtP(planPerMo(PLANS[3]))).replace(" с.", " "+payCurS())}<small>${si.state==="paid"?t("paidTill").replace("{d}", fmtDate(si.until)):si.state==="trial"?t("trialLeft").replace("{n}", si.daysLeft):t("expiredT")}</small></span>${I.chev}</button></div>`; })()}
+    if(PLAY) return ""; const si = subInfo(acc); return `<div class="group"><button class="item" data-sub="plans"><span class="ii" style="background:var(--acc-soft);color:var(--acc)">${I.star}</span><span>${t("subTitle")} · ${t("fromP").replace("{p}", fmtP(planPerMo(PLANS[3]))).replace(" с.", " "+payCurS())}<small>${si.state==="paid"?t("paidTill").replace("{d}", fmtDate(si.until)):si.state==="trial"?t("trialLeft").replace("{n}", si.daysLeft):t("expiredT")}</small></span>${I.chev}</button></div>`; })()}
   <div class="group"><button class="item" data-sub="homebudget"><span class="ii" style="background:var(--acc-soft);color:var(--acc)">${I.house}</span><span>${t("hb")}<small>${t("hbSub")} · ${money(hbBal())}</small></span>${I.chev}</button></div>
   <div class="group"><h3>${t("settings")}</h3>
     <button class="item" data-act="whoedit"><span class="ii">✍</span><span>${t("whoItem")}<small>${esc(LS.get("who","") || t("whoNone"))}</small></span>${I.chev}</button><div class="sep"></div>
     ${it("security","lock",t("security"), pinOn?t("pinOn"):t("pinOff"))}<div class="sep"></div>
     ${it("langtheme","globe",t("langTheme"), {tj:"Тоҷикӣ",uz:"Ўзбекча",ru:"Русский"}[lang]+" · "+t({system:"themeSystem",dark:"themeDark",light:"themeLight"}[LS.get("skin","system")]))}</div>
   <div class="group"><h3>${t("help")}</h3>
-    <button class="item" data-act="refer"><span class="ii" style="background:color-mix(in srgb, var(--warn) 22%, transparent);color:var(--warn)">🎁</span><span>${t("refTitle")}<small>${t("refSub")}</small></span>${I.chev}</button><div class="sep"></div>
+    ${PLAY ? "" : `<button class="item" data-act="refer"><span class="ii" style="background:color-mix(in srgb, var(--warn) 22%, transparent);color:var(--warn)">🎁</span><span>${t("refTitle")}<small>${t("refSub")}</small></span>${I.chev}</button><div class="sep"></div>`}
     ${it("faq","help",t("faq"))}<div class="sep"></div>
     <a class="item" href="https://wa.me/992939911199" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="ii" style="background:#1FAF5B;color:#fff">${I.wa}</span><span>${t("support")}<small class="num">+992 93 991 11 99</small></span>${I.chev}</a></div>
   <div class="outrow"><button data-act="logout">${I.logout} ${t("logout")}</button><button class="trash" data-sub="wipe" aria-label="${t("deleteAll")}">${I.bin}</button></div>
-  <div class="ver">SHOKH IT · ${t("version")} 2.3</div>`;
+  ${me && !isAdmin() ? `<button class="delacc" data-sub="delacc">${t("delAcc")}</button>` : ""}
+  <div class="ver">SHOKH IT · ${t("version")} 2.5${PLAY?" · Play":""}</div>`;
 }
 
 /* ================= sub pages (profile menus) ================= */
@@ -2106,6 +2321,9 @@ const SUBS = {
         return `<div class="hrow" style="grid-template-columns:52px 1fr auto 30px"><span class="ic ${inn?"cash":"exp"}">${inn?I.down:I.up}</span><span style="min-width:0"><div class="nm">${esc(x.cat || (inn?t("hbIn"):t("hbOut")))}</div><div class="tm">${hm(x.at)}${x.n?" · "+esc(x.n):""}</div></span><span class="v num ${inn?"plus":"minus"}">${money(inn?x.a:-x.a,true)}</span><button class="x" data-hbdel="${esc(x.id)}" aria-label="${t("del")}">${I.x}</button></div>`; })
         : `<div class="empty">${t("hbNone")}</div>`}</div>` };
   },
+  delacc(){ return { title:t("delAcc"),
+    body:`<div class="confirm" style="margin-top:18px"><p>${t("delAccAsk")}</p></div><div class="field"><label for="da-pwd">${t("password")}</label><input id="da-pwd" type="password" autocomplete="current-password"></div>`,
+    foot:`<button class="btn red" data-act="delacc">${t("delAccBtn")}</button>` }; },
   wipe(){ return { title:t("deleteAll"),
     body:`<div class="confirm" style="margin-top:18px"><p>${t("deleteAllAsk")}</p></div><div class="field"><label for="w-word">${t("deleteAllWord")}</label><input id="w-word" autocomplete="off"></div>`,
     foot:`<button class="btn red" data-act="wipe">${t("deleteAll")}</button>` }; }
@@ -2143,7 +2361,7 @@ function hbSheet(kind){
     }});
 }
 function renderSubForce(){ if(sub==="admin" && (admTab==="info" || !$("#subl .body"))){ renderSub(); return; } if(sub==="admin"){ const b=$("#subl .body"); const st=b?b.scrollTop:0; const r=SUBS[sub](); $("#subl .body").innerHTML=r.body; $("#subl .body").scrollTop=st; } }
-function openSub(name){ sub = name; renderSub(); }
+function openSub(name){ if(PLAY && name==="plans") return; sub = name; renderSub(); }
 function closeSub(){ if(sub==="admin" && adminUnsub){ adminUnsub(); adminUnsub=null; } if(payUnsub){ payUnsub(); payUnsub=null; payReqs=null; } sub = null; $("#subl").innerHTML = ""; refresh(); }
 
 /* ================= sheets ================= */
@@ -2839,7 +3057,7 @@ document.addEventListener("click", async e => {
     case "sampleadd": return addSamples();
     case "sampleclear": return clearSamples();
     case "duelist": return dueSheet();
-    case "refer": return referSheet();
+    case "refer": if(PLAY) return; return referSheet();
     case "stmt": return statementSheet(sheet.id);
     case "pickcontact": return pickContact();
     case "paycheck": try{ const sn = await fsdb.doc("accounts/"+dataKey(me)).get({source:"server"}); if(sn.exists){ acc = sn.data(); accLoaded = true; } }catch(_){ } checkAccess(); return;
@@ -2876,6 +3094,24 @@ document.addEventListener("click", async e => {
       document.querySelectorAll(".view .confirm").forEach(x=>x.remove()); b.closest(".outrow").after(z); return; }
     case "lo-no": b.closest(".confirm").remove(); return;
     case "lo-yes": closeSub(); tab="home"; LS.set("tab",tab); try{ await auth.signOut(); }catch(_){ } return;
+    case "delacc": { const pwd = $("#da-pwd").value; if(!pwd){ $("#da-pwd").focus(); return; }
+      const u = auth && auth.currentUser; if(!u || !me) return;
+      b.disabled = true; toast(t("deletingAll"));
+      try{
+        await u.reauthenticateWithCredential(firebase.auth.EmailAuthProvider.credential(u.email, pwd));
+      }catch(_){ b.disabled = false; toast(t("delAccPwd")); return; }
+      try{
+        const ph = dataKey(me); const base = "users/"+ph+"/"; stopData();
+        const refs = [];
+        for(const c of COLS){ const sn = await fsdb.collection(base+c).get({source:"server"}); sn.forEach(d=>refs.push(d.ref)); }
+        refs.push(fsdb.doc(base+"settings/shop"));
+        for(let i=0;i<refs.length;i+=400){ const bt = fsdb.batch(); refs.slice(i,i+400).forEach(r=>bt.delete(r)); await bt.commit(); }
+        await fsdb.doc("accounts/"+ph).delete().catch(()=>{});
+        await fsdb.doc("pub/"+ph).delete().catch(()=>{});
+        await u.delete();
+        closeSub(); tab="home"; LS.set("tab",tab); toast(t("delAccDone"));
+      }catch(e){ b.disabled = false; toast(t("failed")); }
+      return; }
     case "wipe": { if(($("#w-word").value||"").trim().toUpperCase()!==t("deleteAllWord")) { $("#w-word").focus(); return; }
       toast(t("deletingAll"));
       try{ for(const col of COLS){ for(const r of [...S[col]]) await api.del(col, r.id); } if(db){ await db.doc("settings/shop").set({}); } else { S.shop={}; localSave(); }
